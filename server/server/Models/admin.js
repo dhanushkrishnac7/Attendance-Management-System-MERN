@@ -27,9 +27,10 @@ const schema = new mongoose.Schema({
     },
     absentdays:{
         type:[Date],
-        default :[]
-    }
-
+        default :[]
+    }
+},{
+    timestamps : true
 })
 
 module.exports = mongoose.model("Admin",schema)
