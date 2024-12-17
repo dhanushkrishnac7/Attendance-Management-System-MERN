@@ -11,6 +11,10 @@ const schema = new mongoose.Schema({
         required: [true, "Email is required"],
         match: [/\S+@\S+\.\S+/, "Please enter a valid email"]
     },
+    password : {
+        type : String,
+        required : [true,"password of the student is required"],
+    },
     phoneno:{
         type : Number,
         required : [true,"Phone Number is required"],
@@ -20,6 +24,10 @@ const schema = new mongoose.Schema({
             },
             message: props => `${props.value} is not a valid phone number!`
         }
+    },
+    department : {
+        type : String,
+        required : [true,"Department of the admin is required"]
     },
     presentdays:{
         type : [Date],
