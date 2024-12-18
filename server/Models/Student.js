@@ -34,6 +34,10 @@ const schema = new mongoose.Schema({
         type : String,
         required : [true,"Department of the student is required"]
     },
+    role : {
+        type : String,
+        default : "student"
+    },
     section : {
         type : String,
         required : [true,"section of the student is required"]

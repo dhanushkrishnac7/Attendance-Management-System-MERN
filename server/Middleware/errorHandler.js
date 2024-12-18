@@ -27,6 +27,7 @@ const errorHandler = (err,req,res,next)=>{
             console.log(err.message)
             break;
     }
+    next()
 }
 
 module.exports = errorHandler

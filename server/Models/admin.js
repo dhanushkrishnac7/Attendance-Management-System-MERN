@@ -15,6 +15,10 @@ const schema = new mongoose.Schema({
         type : String,
         required : [true,"password of the student is required"],
     },
+    role : {
+        type : String,
+        default : "admin"
+    },
     phoneno:{
         type : Number,
         required : [true,"Phone Number is required"],
