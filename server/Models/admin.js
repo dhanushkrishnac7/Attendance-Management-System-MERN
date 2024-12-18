@@ -31,7 +31,7 @@ const schema = new mongoose.Schema({
     },
     department : {
         type : String,
-        required : [true,"Department of the admin is required"]
+        default : ""
     },
     presentdays:{
         type : [Date],

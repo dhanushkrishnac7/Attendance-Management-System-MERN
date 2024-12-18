@@ -65,8 +65,8 @@ const registerSuperAdmin = asynchandler(async(req,res)=>{
 })
 
 const registermasterAdmin = asynchandler(async(req,res)=>{
-    const {name,email,phoneno,password,department} = req.body;
-    if(!name||!email||!phoneno||!password||!department){
+    const {name,email,phoneno,password} = req.body;
+    if(!name||!email||!phoneno||!password){
         res.status(400)
         throw new Error("All fields are mandatory")
     }
