@@ -13,7 +13,6 @@ const loginUser = asynchandler(async(req,res)=>{
         res.status(404);
         throw new Error("User Not Found");
     }
-    //const isvalid = password===user.password
     const isvalid = await bcrypt.compare(password,user.password)
     if(!isvalid){
         res.status(400);
@@ -54,7 +53,7 @@ const registerStudent = asynchandler(async(req,res)=>{
 
 const registerAdmin = asynchandler(async(req,res)=>{
     const {name,email,phoneno,password,department} = req.body;
-    if(!name||!email||!phoneno||!password||!rollno||!department||!section){
+    if(!name||!email||!phoneno||!password||!department){
         res.status(400)
         throw new Error("All fields are mandatory")
     }
@@ -69,17 +68,32 @@ const registerAdmin = asynchandler(async(req,res)=>{
 
 const registerSuperAdmin = asynchandler(async(req,res)=>{
     const {name,email,phoneno,password,department} = req.body;
-    if(!name||!email||!phoneno||!password||!rollno||!department||!section){
+    if(!name||!email||!phoneno||!password||!department){
         res.status(400)
         throw new Error("All fields are mandatory")
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const user = new admin({
-        name,email,phoneno,password:hashedPassword,department,role:"SuperAdmin"
+        name,email,phoneno,password:hashedPassword,department,role:"Superadmin"
     })
     await user.save();
     res.status(201).json(user)
 })
 
-module.exports = {loginUser,registerStudent,registerAdmin,registerSuperAdmin}
+const registermasterAdmin = asynchandler(async(req,res)=>{
+    const {name,email,phoneno,password,department} = req.body;
+    if(!name||!email||!phoneno||!password||!department){
+        res.status(400)
+        throw new Error("All fields are mandatory")
+    }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const user = new admin({
+        name,email,phoneno,password:hashedPassword,department,role:"masteradmin"
+    })
+    await user.save();
+    res.status(201).json(user)
+})
+
+module.exports = {loginUser,registerStudent,registerAdmin,registerSuperAdmin,registermasterAdmin}
