@@ -43,11 +43,11 @@ const schema = new mongoose.Schema({
         required : [true,"section of the student is required"]
     },
     presentdays : {
-        type : [Date],
+        type : [String],
         default : []
     },
     absentdays : {
-        type : [Date],
+        type : [String],
         default : []
     }
 },

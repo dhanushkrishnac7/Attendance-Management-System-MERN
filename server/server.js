@@ -2,11 +2,13 @@ const express = require("express")
 const  dotenv = require("dotenv").config()
 const connectToDatabase = require("./Config/dbConnection")
 const errorHandler = require("./Middleware/errorHandler")
+const { attendanceRecord } = require("./Controllers/attendanceRecord")
 const app = express()
 
 app.use(express.json())
 
 app.use("/user",require("./Routes/userRoutes"))
+app.use(require('./Routes/attendanceRegister'))
 
 app.use(errorHandler)
 
