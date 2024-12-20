@@ -1,4 +1,7 @@
 const  asynchandler = require("express-async-handler")
+const admin = require("../Models/admin")
+const student = require("../Models/Student")
+const bcrypt = require("bcrypt")
 const registerStudent = asynchandler(async(req,res)=>{
     const {name,email,phoneno,password,rollno,department,section} = req.body;
     if(!name||!email||!phoneno||!password||!rollno||!department||!section){

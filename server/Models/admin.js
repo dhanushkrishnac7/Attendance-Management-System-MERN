@@ -34,11 +34,11 @@ const schema = new mongoose.Schema({
         default : ""
     },
     presentdays:{
-        type : [Date],
+        type : [String],
         default : []
     },
     absentdays:{
-        type:[Date],
+        type:[String],
         default :[]
     }
 },{

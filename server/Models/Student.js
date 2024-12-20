@@ -43,17 +43,29 @@ const schema = new mongoose.Schema({
         required : [true,"section of the student is required"]
     },
     presentdays : {
-        type : [Date],
+        type : [String],
         default : []
     },
     absentdays : {
-        type : [Date],
+        type : [String],
         default : []
+    },
+    attendancepercentage : {
+        type : Number,
+        min : 0,
+        max : 100,
+        set: v => Math.round(v * 10) / 10,
+        default : 0
     }
 },
 {
     timestamps : true
 }
 )
+
+schema.pre('save', function(next) {
+    this.attendancepercentage = (this.presentdays.length / (this.presentdays.length+this.absentdays.length)) * 100;
+    next();
+});
 
 module.exports = mongoose.model("Student",schema)

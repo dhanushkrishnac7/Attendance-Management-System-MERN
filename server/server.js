@@ -9,6 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use("/user",require("./Routes/userRoutes"))
+app.use("/attendance",require("./Routes/AttendanceRoutes"))
 
 app.use(errorHandler)
 
